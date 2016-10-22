@@ -80,19 +80,22 @@ var TodoItem = React.createClass({
 		this.props.removeNode(this.props.nodeId);
 		return;
 	},
-	toggleClick: function (e) {
+	toggleComplete: function (e) {
+		console.log(this.props);
 		e.preventDefault();
 		this.props.toggleComplete(this.props.nodeId);
-		this.props.className = 'btn btn-primary'
 		return;
 	},
 	render: function() {
-		var classes = 'list-group-item clearfix';
+		var classes = 'btn';
 		if (this.props.complete === 'true') {
-			classes = classes + ' list-group-item-success';
+			classes = classes + ' btn-success';
+		} else {
+			classes = classes + ' btn-primary'
 		}
+
 		return (
-			<button className="btn btn-default" onClick="{this.toogleComplete}">{this.props.task}</button>
+			<button className={classes} onClick={this.toggleComplete}>{this.props.task}</button>
 		);
 	}
 });
